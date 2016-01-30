@@ -37,6 +37,8 @@ namespace _3939LiveWallpaper
             // Create a simple tray menu with only one item.
             trayMenu = new ContextMenu();
             trayMenu.MenuItems.Add("ToggleSound", LiveWallpaper_OnToggleSound);
+            trayMenu.MenuItems.Add("Reload", LiveWallpaper_OnReload);
+            trayMenu.MenuItems.Add("-");
             trayMenu.MenuItems.Add("Exit", LiveWallpaper_OnExit);
 
             // Create a tray icon. In this example we use a
@@ -74,6 +76,11 @@ namespace _3939LiveWallpaper
             this.WindowState = FormWindowState.Maximized;
         }
 
+        private void LiveWallpaper_OnReload(object sender, EventArgs e)
+        {
+            browser.Reload();
+        }
+
         private void LiveWallpaper_OnToggleSound(object sender, EventArgs e)
         {
             // TODO, Implementation
@@ -83,7 +90,7 @@ namespace _3939LiveWallpaper
         {
             // remove trayIcon
             trayIcon.Visible = false;
-            
+
             // exit application
             Application.Exit();
         }
